@@ -11,12 +11,12 @@ import glob
 import os
 import sys
 
-    
+
 def main():
-    pasta = os.path.join('.', 'dados', '*.txt')
+    pasta = os.path.join(".", "dados", "*.txt")
     resultadomap = list(map(conta_um_arquivo, glob.glob(pasta)))
     resultadofinal = reduce(reduz, map(conta_um_arquivo, glob.glob(pasta)))
-    
+
     for line in sys.stdin:
         inps = line.strip().split(" ")
         case = int(inps[0])
@@ -32,5 +32,5 @@ def main():
             print(None)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
