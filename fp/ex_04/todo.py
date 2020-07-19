@@ -24,7 +24,7 @@ def citations(L):
     if not L:
         return None
     else:
-        return ["" + str(name[0][0].capitalize()) + ". " + str(name[-1].capitalize()) for name in L]
+        return [str(name[0][0].capitalize()) + ". " + str(name[-1].capitalize()) for name in L]
 
 
 def fullCitations(L):
