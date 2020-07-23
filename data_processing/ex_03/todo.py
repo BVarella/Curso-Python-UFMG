@@ -10,7 +10,6 @@ import tarfile
 
 
 def extract_and_process(member):
-
     tar = tarfile.open("dados.tar.gz", "r:gz")
     f = tar.extractfile(member)
     soup = BeautifulSoup(f, "html.parser")
@@ -31,10 +30,13 @@ def merge_function(dict_1, dict_2):
 
 def mapreduce(num_cpus=2):
     tar = tarfile.open("dados.tar.gz", "r:gz")
+
     if num_cpus > 1:
         with mp.Pool(num_cpus) as pool:
             intermed = pool.imap_unordered(extract_and_process, tar.getmembers())
     else:
         intermed = map(extract_and_process, tar.getmembers())
+
     final = reduce(merge_function, intermed)
+
     return final
